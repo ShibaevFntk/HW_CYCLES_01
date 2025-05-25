@@ -9,11 +9,10 @@ public class HolidayServiceTest {
     @ParameterizedTest
     @CsvFileSource(files = "src/test/resources/HolidayServiceTest.csv")
 
-    public void testHolidayCount() {
+    public void testHolidayCount(int income, int expenses, int threshold, int expected) {
 
         ServiceHoliday service = new ServiceHoliday();
-        int expected = 2;
-        int actual = service.calculate(100_000, 60_000, 150_000);
+        int actual = service.calculate(income, expenses, threshold);
 
         Assertions.assertEquals(expected, actual);
 
